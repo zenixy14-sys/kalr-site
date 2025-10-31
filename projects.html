@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Projects — Kalr</title>
+<link rel="icon" href="assets/favicon.png" />
+<style>
+  :root{--bg:#071016;--accent1:#00f5c4;--muted:#9fb4c6}
+  body{margin:0;background:var(--bg);color:#e6f0f8;font-family:Inter,Poppins}
+  .wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:36px}
+  .card{width:960px;max-width:96vw;background:rgba(12,18,24,0.6);padding:26px;border-radius:14px;border:1px solid rgba(0,245,196,0.07)}
+  h2{background:linear-gradient(90deg,var(--accent1),#6a5dff);-webkit-background-clip:text;color:transparent}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
+  .proj{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,0.03)}
+  .proj h4{margin:0;color:var(--accent1)}
+  .proj p{color:var(--muted);font-size:0.95rem}
+  .actions{display:flex;gap:8px;margin-top:10px}
+  .actions a{padding:8px 10px;border-radius:8px;background:rgba(255,255,255,0.03);text-decoration:none;color:var(--muted)}
+  @media (max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}} @media (max-width:600px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <h2>Featured Projects</h2>
+    <div class="grid">
+      <div class="proj">
+        <h4>Kalr Utilities</h4>
+        <p>Collection of small tools: math analyzer, map opener, notes, and more.</p>
+        <div class="actions"><a href="#">View</a><a href="#">Code</a></div>
+      </div>
+      <div class="proj">
+        <h4>Neon Portfolio</h4>
+        <p>Dark theme portfolio with animated backgrounds and chat popup (this site).</p>
+        <div class="actions"><a href="#">Live</a><a href="#">Code</a></div>
+      </div>
+      <div class="proj">
+        <h4>Mini Game</h4>
+        <p>Small browser game prototype with pixel art and JS logic.</p>
+        <div class="actions"><a href="#">Play</a><a href="#">Code</a></div>
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;margin-top:18px">
+      <button onclick="location.href='about.html'">← Previous</button>
+      <button onclick="location.href='calculator.html'">Next →</button>
+    </div>
+  </div>
+</div>
+</body>
+</html>
