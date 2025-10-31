@@ -1,233 +1,170 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kalr | Developer, Designer & Gamer</title>
-  <meta name="description" content="Kalr — Developer • Designer • Gamer">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
-
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-
-    body {
-      background: radial-gradient(circle at 20% 20%, #0f2027, #203a43, #2c5364);
-      color: #e4f1fe;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      text-align: center;
-      overflow: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: linear-gradient(120deg, #00f5c4, #0072ff, #00f5c4);
-      background-size: 200% 200%;
-      animation: bgMove 10s ease infinite;
-      z-index: -1;
-      opacity: 0.15;
-    }
-
-    @keyframes bgMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    .container {
-      background: rgba(20, 28, 38, 0.55);
-      border: 1px solid rgba(0, 255, 255, 0.2);
-      border-radius: 20px;
-      padding: 40px 50px;
-      box-shadow: 0 0 30px rgba(0, 255, 255, 0.15);
-      backdrop-filter: blur(15px);
-      transition: transform 0.3s ease;
-      max-width: 400px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .container:hover { transform: scale(1.02); }
-
-    .profile-pic {
-      width: 140px; height: 140px;
-      border-radius: 50%;
-      border: 3px solid #00f5c4;
-      margin-bottom: 20px;
-      object-fit: cover;
-      box-shadow: 0 0 15px #00f5c4aa;
-      transition: all 0.4s ease;
-    }
-
-    .profile-pic:hover {
-      transform: scale(1.08) rotate(2deg);
-      box-shadow: 0 0 25px #00f5c4cc;
-    }
-
-    h1 {
-      font-size: 2.6em;
-      font-weight: 700;
-      background: linear-gradient(90deg, #00f5c4, #0072ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 10px;
-    }
-
-    p { font-size: 1.1em; color: #b8c6d9; margin-bottom: 25px; }
-
-    .btn {
-      background: linear-gradient(90deg, #00f5c4, #0072ff);
-      color: #0b0e11;
-      padding: 14px 32px;
-      border-radius: 40px;
-      font-weight: 600;
-      text-decoration: none;
-      font-size: 1em;
-      box-shadow: 0 0 15px #00f5c4aa;
-      transition: all 0.3s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .btn:hover { transform: scale(1.08); box-shadow: 0 0 25px #00f5c4cc; }
-
-    footer {
-      margin-top: 35px;
-      font-size: 0.9em;
-      color: #8da0b8;
-      letter-spacing: 0.5px;
-    }
-
-    .orb {
-      position: absolute;
-      width: 250px; height: 250px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,255,255,0.25) 0%, rgba(0,255,255,0) 70%);
-      animation: float 12s ease-in-out infinite;
-    }
-
-    .orb:nth-child(1) { top: 10%; left: 15%; animation-delay: 0s; }
-    .orb:nth-child(2) { bottom: 15%; right: 10%; animation-delay: 4s; }
-    .orb:nth-child(3) { top: 50%; right: 30%; animation-delay: 7s; }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-20px); }
-    }
-
-    /* CHAT POPUP */
-    .chat-popup {
-      position: fixed;
-      bottom: 80px;
-      right: 40px;
-      background: rgba(18, 25, 35, 0.9);
-      border: 1px solid rgba(0, 255, 255, 0.2);
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(0,255,255,0.15);
-      width: 280px;
-      display: none;
-      flex-direction: column;
-      padding: 20px;
-      z-index: 100;
-      backdrop-filter: blur(10px);
-      animation: pop 0.3s ease;
-    }
-
-    @keyframes pop {
-      from { transform: translateY(20px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    .chat-popup h3 {
-      font-size: 1.1em;
-      color: #00f5c4;
-      margin-bottom: 10px;
-    }
-
-    .chat-popup p {
-      font-size: 0.95em;
-      color: #b8c6d9;
-      margin-bottom: 15px;
-    }
-
-    .chat-popup a {
-      background: linear-gradient(90deg, #00f5c4, #0072ff);
-      color: #0b0e11;
-      text-decoration: none;
-      padding: 10px 15px;
-      border-radius: 30px;
-      font-weight: 600;
-      display: inline-block;
-      box-shadow: 0 0 12px #00f5c4aa;
-      text-align: center;
-    }
-
-    .chat-popup a:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 18px #00f5c4cc;
-    }
-
-    .chat-icon {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      width: 60px; height: 60px;
-      border-radius: 50%;
-      background: linear-gradient(90deg, #00f5c4, #0072ff);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 20px #00f5c4aa;
-      cursor: pointer;
-      transition: 0.3s;
-      z-index: 101;
-    }
-
-    .chat-icon:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 25px #00f5c4cc;
-    }
-
-    @media (max-width: 600px) {
-      .chat-popup { right: 15px; bottom: 70px; width: 85%; }
-      .chat-icon { right: 15px; bottom: 15px; }
-    }
-  </style>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Kalr — Home</title>
+<meta name="description" content="Kalr — Developer • Designer • Gamer" />
+<link rel="icon" href="assets/favicon.png" />
+<style>
+  /* ---------- Shared style (dark neon theme) ---------- */
+  :root{
+    --bg:#071016; --card:rgba(12,18,24,0.6);
+    --muted:#9fb4c6; --accent1:#00f5c4; --accent2:#6a5dff;
+    --glass-border: rgba(0,245,196,0.15);
+    --glass-strong: rgba(10,14,20,0.9);
+  }
+  html,body{height:100%;margin:0;font-family:Inter, Poppins, sans-serif;background:#071016;color:#e6f0f8}
+  a{color:inherit}
+  /* particle canvas below everything */
+  .wrap{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:40px}
+  canvas#particles{position:fixed;inset:0;z-index:0;pointer-events:none}
+  .card{position:relative;z-index:2;background:linear-gradient(180deg,var(--card), rgba(8,12,16,0.4));
+    border:1px solid var(--glass-border);backdrop-filter: blur(10px);
+    padding:34px;border-radius:18px;max-width:920px;width:100%;box-shadow:0 10px 40px rgba(0,0,0,0.6)}
+  .grid{display:grid;grid-template-columns:220px 1fr;gap:30px;align-items:center}
+  .profile{display:flex;flex-direction:column;align-items:center}
+  .avatar{width:180px;height:180px;border-radius:50%;border:4px solid var(--accent1);object-fit:cover;box-shadow:0 12px 40px rgba(0,245,196,0.08)}
+  h1{font-size:2.4rem;margin:12px 0;line-height:1.05;background:linear-gradient(90deg,var(--accent1),var(--accent2));-webkit-background-clip:text;color:transparent}
+  p.lead{color:var(--muted);margin-bottom:18px}
+  .btns{display:flex;gap:12px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:999px;font-weight:600;text-decoration:none;border:none;cursor:pointer}
+  .btn-primary{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#071016;box-shadow:0 8px 26px rgba(0,245,196,0.07)}
+  .btn-ghost{background:transparent;color:var(--muted);border:1px solid rgba(255,255,255,0.04)}
+  .footer{margin-top:18px;color:var(--muted);font-size:0.9rem}
+  nav.topnav{position:fixed;top:18px;left:18px;right:18px;display:flex;justify-content:space-between;align-items:center;z-index:5}
+  nav .menu{display:flex;gap:10px;align-items:center}
+  nav a.link{color:var(--muted);padding:8px 12px;border-radius:10px;text-decoration:none}
+  nav a.link:hover{color:var(--accent1)}
+  /* floating chat icon */
+  .chat-icon{position:fixed;right:20px;bottom:20px;width:64px;height:64px;border-radius:50%;background:linear-gradient(90deg,var(--accent1),var(--accent2));display:flex;align-items:center;justify-content:center;z-index:6;cursor:pointer;box-shadow:0 14px 40px rgba(106,93,255,0.12)}
+  .chat-popup{position:fixed;right:96px;bottom:28px;width:300px;background:var(--glass-strong);border:1px solid var(--glass-border);backdrop-filter:blur(8px);padding:16px;border-radius:12px;display:none;z-index:6}
+  .chat-popup h4{color:var(--accent1);margin:0 0 8px}
+  /* top/bottom navigator */
+  .nav-footer{display:flex;justify-content:center;gap:14px;margin-top:18px}
+  .nav-action{background:transparent;border:1px solid rgba(255,255,255,0.03);padding:10px 14px;border-radius:10px;color:var(--muted);cursor:pointer}
+  /* responsive */
+  @media (max-width:820px){.grid{grid-template-columns:1fr;row-gap:18px;text-align:center}.avatar{width:140px;height:140px}}
+  /* music control */
+  .music-control{position:fixed;left:20px;bottom:22px;background:rgba(10,12,16,0.7);border:1px solid var(--glass-border);padding:8px 10px;border-radius:10px;z-index:6;color:var(--muted)}
+</style>
 </head>
 <body>
-  <div class="orb"></div>
-  <div class="orb"></div>
-  <div class="orb"></div>
+<canvas id="particles"></canvas>
 
-  <div class="container">
-    <img src="https://via.placeholder.com/140x140.png?text=Kalr" alt="Profile Picture" class="profile-pic">
-    <h1>Hey, I'm <span style="color:#00f5c4;">Kalr</span></h1>
-    <p>Developer • Designer • Gamer</p>
-    <footer>© 2025 Created by Kalr</footer>
+<nav class="topnav">
+  <div class="brand" style="color:var(--accent1);font-weight:700">Kalr</div>
+  <div class="menu">
+    <a class="link" href="index.html">Home</a>
+    <a class="link" href="about.html">About</a>
+    <a class="link" href="projects.html">Projects</a>
+    <a class="link" href="calculator.html">Calculator</a>
+    <a class="link" href="contact.html">Contact</a>
   </div>
+</nav>
 
-  <!-- Floating Chat Icon -->
-  <div class="chat-icon" onclick="toggleChat()">💬</div>
+<div class="wrap">
+  <div class="card">
+    <div class="grid">
+      <div class="profile">
+        <img src="assets/profile.jpg" alt="Kalr" class="avatar">
+        <div style="height:10px"></div>
+        <div style="color:var(--muted);font-size:0.95rem">Developer • Designer • Gamer</div>
+      </div>
 
-  <!-- Chat Popup -->
-  <div class="chat-popup" id="chatBox">
-    <h3>Chat with Kalr</h3>
-    <p>Want to reach me instantly? Tap below to message me on Telegram!</p>
-    <a href="https://t.me/y4mmy" target="_blank">Start Chat 💬</a>
+      <div class="content">
+        <h1>Hey, I'm <span style="color:var(--accent1)">Kalr</span></h1>
+        <p class="lead">I design and build creative software experiences — web, tools, and small utilities. Welcome to my space.</p>
+
+        <div class="btns">
+          <a href="projects.html" class="btn btn-primary">Explore Projects →</a>
+          <a href="about.html" class="btn btn-ghost">About Me</a>
+          <button class="btn btn-ghost" id="openChatBtn">Chat (Telegram)</button>
+        </div>
+
+        <div class="footer">© 2025 Created by Kalr · <span style="color:var(--muted)">Built for speed & style</span></div>
+
+        <div class="nav-footer">
+          <button class="nav-action" onclick="location.href='about.html'">Next →</button>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
 
-  <script>
-    function toggleChat() {
-      const box = document.getElementById('chatBox');
-      box.style.display = (box.style.display === 'flex') ? 'none' : 'flex';
-    }
-  </script>
+<!-- chat popup -->
+<div class="chat-popup" id="chatBox">
+  <h4>Chat with Kalr</h4>
+  <p style="color:var(--muted);font-size:0.95rem;margin-bottom:12px">Tap the button to open Telegram and start a DM</p>
+  <a class="btn btn-primary" href="https://t.me/y4mmy" target="_blank" style="display:inline-block">Open Telegram</a>
+</div>
+
+<div class="chat-icon" id="chatIcon" title="Chat with Kalr">💬</div>
+
+<!-- music control -->
+<div class="music-control" id="musicCtrl">
+  <button id="musicToggle" style="background:transparent;border:none;color:var(--muted);cursor:pointer">Play music ►</button>
+</div>
+
+<script>
+/* ===== particles (lightweight) ===== */
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+let w=canvas.width=innerWidth, h=canvas.height=innerHeight;
+addEventListener('resize',()=>{w=canvas.width=innerWidth; h=canvas.height=innerHeight; initParticles();});
+
+let particles=[];
+function initParticles(){
+  particles = [];
+  const count = Math.max(30, Math.floor((w*h)/70000));
+  for(let i=0;i<count;i++){
+    particles.push({
+      x: Math.random()*w,
+      y: Math.random()*h,
+      r: Math.random()*2+0.8,
+      vx: (Math.random()-0.5)*0.3,
+      vy: (Math.random()-0.5)*0.3,
+      hue: 180 + Math.random()*120
+    });
+  }
+}
+function loop(){
+  ctx.clearRect(0,0,w,h);
+  for(const p of particles){
+    p.x+=p.vx; p.y+=p.vy;
+    if(p.x<0)p.x=w; if(p.x>w)p.x=0;
+    if(p.y<0)p.y=h; if(p.y>h)p.y=0;
+    ctx.beginPath();
+    const g = ctx.createRadialGradient(p.x,p.y,p.r/2,p.x,p.y,p.r*6);
+    g.addColorStop(0, `hsla(${p.hue},100%,60%,0.12)`);
+    g.addColorStop(1, `rgba(0,0,0,0)`);
+    ctx.fillStyle = g;
+    ctx.arc(p.x,p.y,p.r*6,0,Math.PI*2);
+    ctx.fill();
+  }
+  requestAnimationFrame(loop);
+}
+initParticles(); loop();
+
+/* ===== chat toggle ===== */
+const chatBtn = document.getElementById('chatIcon');
+const chatBox = document.getElementById('chatBox');
+const openChatBtn = document.getElementById('openChatBtn');
+function toggleChat(){ chatBox.style.display = chatBox.style.display==='flex' ? 'none' : 'flex'; chatBox.style.flexDirection='column'; }
+chatBtn.onclick = toggleChat; openChatBtn.onclick = ()=>{ window.open('https://t.me/y4mmy', '_blank'); };
+
+/* ===== music control ===== */
+let audio = new Audio('assets/music.mp3');
+audio.loop = true; audio.volume = 0.12;
+const musicToggle = document.getElementById('musicToggle');
+let playing=false;
+musicToggle.onclick = ()=>{
+  if(!playing){ audio.play().catch(()=>{}); playing=true; musicToggle.textContent='Pause music ▌▌'; }
+  else{ audio.pause(); playing=false; musicToggle.textContent='Play music ►'; }
+};
+
+/* ===== next/previous navigation (for uniform behavior) ===== */
+function navNext(){ location.href='about.html'; }
+</script>
 </body>
 </html>
