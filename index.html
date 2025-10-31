@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalr | Developer, Designer & Gamer</title>
+  <meta name="description" content="Kalr — Developer • Designer • Gamer">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+    body {
+      background: radial-gradient(circle at 20% 20%, #0f2027, #203a43, #2c5364);
+      color: #e4f1fe;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(120deg, #00f5c4, #0072ff, #00f5c4);
+      background-size: 200% 200%;
+      animation: bgMove 10s ease infinite;
+      z-index: -1;
+      opacity: 0.15;
+    }
+
+    @keyframes bgMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      background: rgba(20, 28, 38, 0.55);
+      border: 1px solid rgba(0, 255, 255, 0.2);
+      border-radius: 20px;
+      padding: 40px 50px;
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.15);
+      backdrop-filter: blur(15px);
+      transition: transform 0.3s ease;
+      max-width: 400px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .container:hover { transform: scale(1.02); }
+
+    .profile-pic {
+      width: 140px; height: 140px;
+      border-radius: 50%;
+      border: 3px solid #00f5c4;
+      margin-bottom: 20px;
+      object-fit: cover;
+      box-shadow: 0 0 15px #00f5c4aa;
+      transition: all 0.4s ease;
+    }
+
+    .profile-pic:hover {
+      transform: scale(1.08) rotate(2deg);
+      box-shadow: 0 0 25px #00f5c4cc;
+    }
+
+    h1 {
+      font-size: 2.6em;
+      font-weight: 700;
+      background: linear-gradient(90deg, #00f5c4, #0072ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+    }
+
+    p { font-size: 1.1em; color: #b8c6d9; margin-bottom: 25px; }
+
+    .btn {
+      background: linear-gradient(90deg, #00f5c4, #0072ff);
+      color: #0b0e11;
+      padding: 14px 32px;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 1em;
+      box-shadow: 0 0 15px #00f5c4aa;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn:hover { transform: scale(1.08); box-shadow: 0 0 25px #00f5c4cc; }
+
+    footer {
+      margin-top: 35px;
+      font-size: 0.9em;
+      color: #8da0b8;
+      letter-spacing: 0.5px;
+    }
+
+    .orb {
+      position: absolute;
+      width: 250px; height: 250px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,255,255,0.25) 0%, rgba(0,255,255,0) 70%);
+      animation: float 12s ease-in-out infinite;
+    }
+
+    .orb:nth-child(1) { top: 10%; left: 15%; animation-delay: 0s; }
+    .orb:nth-child(2) { bottom: 15%; right: 10%; animation-delay: 4s; }
+    .orb:nth-child(3) { top: 50%; right: 30%; animation-delay: 7s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    /* CHAT POPUP */
+    .chat-popup {
+      position: fixed;
+      bottom: 80px;
+      right: 40px;
+      background: rgba(18, 25, 35, 0.9);
+      border: 1px solid rgba(0, 255, 255, 0.2);
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,255,255,0.15);
+      width: 280px;
+      display: none;
+      flex-direction: column;
+      padding: 20px;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+      animation: pop 0.3s ease;
+    }
+
+    @keyframes pop {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .chat-popup h3 {
+      font-size: 1.1em;
+      color: #00f5c4;
+      margin-bottom: 10px;
+    }
+
+    .chat-popup p {
+      font-size: 0.95em;
+      color: #b8c6d9;
+      margin-bottom: 15px;
+    }
+
+    .chat-popup a {
+      background: linear-gradient(90deg, #00f5c4, #0072ff);
+      color: #0b0e11;
+      text-decoration: none;
+      padding: 10px 15px;
+      border-radius: 30px;
+      font-weight: 600;
+      display: inline-block;
+      box-shadow: 0 0 12px #00f5c4aa;
+      text-align: center;
+    }
+
+    .chat-popup a:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 18px #00f5c4cc;
+    }
+
+    .chat-icon {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      width: 60px; height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(90deg, #00f5c4, #0072ff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 20px #00f5c4aa;
+      cursor: pointer;
+      transition: 0.3s;
+      z-index: 101;
+    }
+
+    .chat-icon:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 25px #00f5c4cc;
+    }
+
+    @media (max-width: 600px) {
+      .chat-popup { right: 15px; bottom: 70px; width: 85%; }
+      .chat-icon { right: 15px; bottom: 15px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="orb"></div>
+  <div class="orb"></div>
+  <div class="orb"></div>
+
+  <div class="container">
+    <img src="https://via.placeholder.com/140x140.png?text=Kalr" alt="Profile Picture" class="profile-pic">
+    <h1>Hey, I'm <span style="color:#00f5c4;">Kalr</span></h1>
+    <p>Developer • Designer • Gamer</p>
+    <footer>© 2025 Created by Kalr</footer>
+  </div>
+
+  <!-- Floating Chat Icon -->
+  <div class="chat-icon" onclick="toggleChat()">💬</div>
+
+  <!-- Chat Popup -->
+  <div class="chat-popup" id="chatBox">
+    <h3>Chat with Kalr</h3>
+    <p>Want to reach me instantly? Tap below to message me on Telegram!</p>
+    <a href="https://t.me/y4mmy" target="_blank">Start Chat 💬</a>
+  </div>
+
+  <script>
+    function toggleChat() {
+      const box = document.getElementById('chatBox');
+      box.style.display = (box.style.display === 'flex') ? 'none' : 'flex';
+    }
+  </script>
+</body>
+</html>
