@@ -5,9 +5,8 @@
 <title>About — Kalr</title>
 <link rel="icon" href="assets/favicon.png" />
 <style>
-  /* same theme variables */
   :root{--bg:#071016;--card:rgba(12,18,24,0.6);--accent1:#00f5c4;--muted:#9fb4c6}
-  body{margin:0;background:#071016;color:#e6f0f8;font-family:Inter,Poppins, sans-serif}
+  body{margin:0;background:var(--bg);color:#e6f0f8;font-family:Inter,Poppins}
   .wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:36px}
   .card{background:linear-gradient(180deg,var(--card), rgba(8,12,16,0.45));padding:30px;border-radius:16px;border:1px solid rgba(0,245,196,0.08);width:900px;max-width:96vw}
   .grid{display:grid;grid-template-columns:260px 1fr;gap:28px;align-items:start}
@@ -40,7 +39,7 @@
         </div>
 
         <h3 style="margin-top:18px;color:var(--accent1)">Skills & Tools</h3>
-        <p class="muted" style="color:var(--muted);">React • Vanilla JS • Node basics • Figma • Photoshop • Git</p>
+        <p style="color:var(--muted);">React • Vanilla JS • Node basics • Figma • Photoshop • Git</p>
 
         <div class="nav">
           <button onclick="location.href='index.html'">← Previous</button>
